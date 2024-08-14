@@ -22,6 +22,17 @@ import { startMaterializedViewRefreshJob } from "./jobs/materializedViews"
 checkDbConnection()
 setupCronJobs()
 
+async function updatePlanToUnlimited() {
+  try {
+    await sql`update org set plan = 'unlimited'`;
+    console.log("Updated plan to 'unlimited' successfully.");
+  } catch (error) {
+    console.error("Error updating plan:", error);
+  }
+}
+
+updatePlanToUnlimited();
+
 if (process.env.NODE_ENV === "production") {
   startMaterializedViewRefreshJob()
 }
