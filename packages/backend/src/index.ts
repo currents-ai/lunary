@@ -25,7 +25,7 @@ setupCronJobs()
 if (process.env.NODE_ENV === "production") {
   startMaterializedViewRefreshJob()
 }
-initSentry()
+// initSentry()
 
 const app = new Koa()
 
@@ -34,7 +34,7 @@ app.proxy = true
 
 // MiddleWares
 app.use(requestHandler)
-app.use(tracingMiddleWare)
+// app.use(tracingMiddleWare)
 app.use(errorMiddleware)
 app.use(logger())
 app.use(corsMiddleware)
@@ -44,9 +44,9 @@ app.use(ratelimit)
 app.use(bodyParser({ jsonLimit: "5mb", textLimit: "5mb" }))
 app.use(setDefaultBody)
 
-if (config.IS_SELF_HOSTED) {
-  app.use(licenseMiddleware)
-}
+// if (config.IS_SELF_HOSTED) {
+//  app.use(licenseMiddleware)
+// }
 
 // Routes
 app.use(redirections.routes())
