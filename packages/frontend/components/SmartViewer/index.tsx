@@ -30,6 +30,9 @@ const checkIsMessage = (obj) => {
 }
 
 const checkIsRetrieverObjects = (obj) => {
+  if (!obj) {
+    return false;
+  }
   return Array.isArray(obj)
     ? obj.every(checkIsRetrieverObjects)
     : (typeof obj.title === "string" || typeof obj.id !== "undefined") &&
