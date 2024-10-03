@@ -12,7 +12,7 @@ fi
 
 if [ -z "$API_URL" ]; then
   echo "Error: API_URL not set. Please set the API_URL environment variables."
-  exit 1
+  # exit 1
 fi
 
 LC_ALL=C  find .next -type f -exec perl -pi -e "s|xyzPLACEHOLDERxyz|${API_URL}|g" {} +
